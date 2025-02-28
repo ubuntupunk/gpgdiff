@@ -111,13 +111,14 @@ def main():
         export_gpg_key(unique_key2, tmp2.name, args.secret)
         diff_result = diff_keys(tmp1.name, tmp2.name)
 
+        console.rule("[bold blue]Comparison Result[/bold blue]")
         if not diff_result:
-            rprint(Panel("[green]The keys are identical based on their exported content.[/green]", title="Result"))
+            console.print(Panel("[green]The keys are identical based on their exported content.[/green]", title="Result"))
         else:
-            rprint(Panel("[yellow]The keys are different.[/yellow]", title="Result"))
-            rprint("[yellow]Differences in exported content:[/yellow]")
-            rprint(diff_result)
-            rprint("[yellow]Note: Differences may include metadata but not necessarily the cryptographic material.[/yellow]")
+            console.print(Panel("[yellow]The keys are different.[/yellow]", title="Result"))
+            console.print("[yellow]Differences in exported content:[/yellow]")
+            console.print(diff_result)
+            console.print("[yellow]Note: Differences may include metadata but not necessarily the cryptographic material.[/yellow]")
 
     if args.deep_analysis:
         rprint(Panel("[blue]Performing deeper analysis...[/blue]", title="Deeper Analysis"))
